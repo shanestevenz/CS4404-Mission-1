@@ -24,7 +24,8 @@ client.connect()
   })
   .then(console.log)
 
-
+  app.use(express.urlencoded({ extended: true }))
+  app.use(express.json())
 
 
 app.get("/", function (req, res) {
@@ -48,10 +49,14 @@ app.get("/getResults", function (req, res) {
 
 app.use("/vote", (req, res) => {
     console.log("Cast Vote")
-    console.log(req.body.candidate)
-
-    collection.insertOne(request.body).then(result => collection.findOne(result.insertedId)).then( findResult => response.json( findResult))
+    console.log(req.body)
     
+ try {
+  collection.updateOne( { candidate: req.body.candidate}, { $inc: { numVotes: req.body.numVotes  }}, { upsert: true }).then(result => console.log(result))
+ } catch (error) {
+  console.log(error);
+ }
+   
 });
 
 //add other API calls
