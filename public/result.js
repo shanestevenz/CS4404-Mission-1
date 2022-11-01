@@ -9,8 +9,6 @@ fetch("/getResults", {
     });
 
 
-
-
 function CastVote() {
 
   //  let candidate = todoForm.elements.todo,
