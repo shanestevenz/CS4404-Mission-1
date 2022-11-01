@@ -50,7 +50,7 @@ app.get("/getResults", function (req, res) {
 app.use("/vote", (req, res) => {
     console.log("Cast Vote")
     console.log(req.body)
-    
+
  try {
   collection.updateOne( { candidate: req.body.candidate}, { $inc: { numVotes: req.body.numVotes  }}, { upsert: true }).then(result => console.log(result))
  } catch (error) {
@@ -62,4 +62,4 @@ app.use("/vote", (req, res) => {
 //add other API calls
 app.use(express.static(path.join(__dirname, "public")));
 
-app.listen(3000, () => console.log("Server started"));
+app.listen(8080, () => console.log("Server started"));

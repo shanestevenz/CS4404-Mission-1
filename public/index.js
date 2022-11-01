@@ -26,7 +26,7 @@ function CastVote(event, candidate) {
           console.log(body)
   
       fetch('/vote', {
-          method: 'PUT',
+          method: 'POST',
           body,
           headers: {
               "Content-Type": "application/json"
