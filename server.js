@@ -7,23 +7,23 @@ app.use(cors());
 
 
 
-const mongodb = require('mongodb');
+//const mongodb = require('mongodb');
 const { json } = require("express");
-const uri = "mongodb+srv://Misison1:Mission1@cluster0.ewyurrb.mongodb.net/?retryWrites=true&w=majority"; //username: Misison1    password: Mission1
-const client = new mongodb.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+//const uri = "mongodb+srv://Misison1:Mission1@cluster0.ewyurrb.mongodb.net/?retryWrites=true&w=majority"; //username: Misison1    password: Mission1
+//const client = new mongodb.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-let collection
+//let collection
 
 
-client.connect()
-  .then(() => {
-    return client.db('networkSecurity_data').collection('networkSecurity_collection')
-  })
-  .then(__collection => {
-    collection = __collection
-    return collection.find({}).toArray()
-  })
-  .then(console.log)
+//client.connect()
+//  .then(() => {
+//    return client.db('networkSecurity_data').collection('networkSecurity_collection')
+//  })
+//  .then(__collection => {
+//    collection = __collection
+//    return collection.find({}).toArray()
+//  })
+//  .then(console.log)
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -37,14 +37,14 @@ app.get("/result", function (req, res) {
 });
 
 
-app.get("/getResults", function (req, res) {
-
-  if (collection !== null) {
-
-    //TODO: dont pass username here: just get everyting
-    collection.find({ username: req.session.username }).toArray().then(result => res.json(result))
-  }
-});
+//app.get("/getResults", function (req, res) {
+//
+//  if (collection !== null) {
+//
+//    //TODO: dont pass username here: just get everyting
+//    collection.find({ username: req.session.username }).toArray().then(result => res.json(result))
+//  }
+//});
 
 
 
